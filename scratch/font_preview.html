@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Font Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Bungee&family=Fredoka:wght@700;900&family=Lilita+One&family=Luckiest+Guy&family=Titan+One&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Waltograph';
+      src: url('../public/fonts/waltograph42.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'AgentOrange';
+      src: url('../public/fonts/AgentOrange.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'GillSansUltra';
+      src: url('../public/fonts/GillSansUltraBold.ttf') format('truetype');
+    }
+
+    body {
+      background: #55acee;
+      font-family: sans-serif;
+      padding: 40px;
+      color: white;
+    }
+    .preview-card {
+      background: rgba(0,0,0,0.25);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+    .label {
+      font-size: 14px;
+      color: #fde047;
+      margin-bottom: 8px;
+    }
+    .toy-style {
+      font-size: 64px;
+      color: #ffee00;
+      -webkit-text-stroke: 4px #154bb3;
+      paint-order: stroke fill;
+      text-shadow: 0 4px 0 #154bb3, 0 8px 0 #0b2f7a, 0 12px 0 #07225c;
+    }
+    .plain {
+      font-size: 64px;
+      color: #ffee00;
+    }
+    .disney-style {
+      font-family: 'Waltograph';
+      font-size: 52px;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>Toy Story Font Comparison</h1>
+  
+  <div class="preview-card">
+    <div class="label">Waltograph ("Disney" in Disney Pixar):</div>
+    <div class="disney-style">Disney · PIXAR</div>
+  </div>
+
+  <div class="preview-card">
+    <div class="label">AgentOrange (Current):</div>
+    <div class="toy-style" style="font-family: 'AgentOrange';">DYAKSA</div>
+    <div class="plain" style="font-family: 'AgentOrange';">DYAKSA</div>
+  </div>
+
+  <div class="preview-card">
+    <div class="label">Gill Sans Ultra Bold:</div>
+    <div class="toy-style" style="font-family: 'GillSansUltra';">DYAKSA</div>
+    <div class="plain" style="font-family: 'GillSansUltra';">WIRATARA</div>
+  </div>
+
+  <div class="preview-card">
+    <div class="label">Lilita One:</div>
+    <div class="toy-style" style="font-family: 'Lilita One';">DYAKSA</div>
+  </div>
+
+  <div class="preview-card">
+    <div class="label">Luckiest Guy:</div>
+    <div class="toy-style" style="font-family: 'Luckiest Guy';">DYAKSA</div>
+  </div>
+
+  <div class="preview-card">
+    <div class="label">Titan One:</div>
+    <div class="toy-style" style="font-family: 'Titan One';">DYAKSA</div>
+  </div>
+
+  <div class="preview-card">
+    <div class="label">Bowlby One:</div>
+    <div class="toy-style" style="font-family: 'Bowlby One';">DYAKSA</div>
+  </div>
+</body>
+</html>

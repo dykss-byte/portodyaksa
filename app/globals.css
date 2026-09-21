@@ -1,26 +1,1768 @@
 @import "tailwindcss";
 
+/* ======================================================= */
+/* 🔤 AUTHENTIC DISNEY PIXAR TOY STORY DISPLAY FONTS       */
+/* ======================================================= */
+@font-face {
+  font-family: 'ToyStoryAgent';
+  src: url('/fonts/AgentOrange.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GillSansUltra';
+  src: url('/fonts/GillSansUltraBoldRegular.ttf') format('truetype'),
+       url('/fonts/GillSansUltraBold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: var(--font-fredoka), "Fredoka", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-agent-orange), var(--font-gill-sans), var(--font-lilita), "Lilita One", cursive, sans-serif;
+  --font-story: var(--font-gill-sans), var(--font-lilita), sans-serif;
+  --font-disney: var(--font-waltograph), cursive, sans-serif;
+  --font-gill: var(--font-gill-sans), 'Arial Black', sans-serif;
+
+  /* AUTHENTIC TOY STORY COLOR PALETTE */
+  --andy-sky-blue: #38bdf8;
+  --andy-cloud-white: #ffffff;
+  --woody-cowboy-yellow: #f59e0b;
+  --woody-flannel-red: #dc2626;
+  --woody-jeans-blue: #1d4ed8;
+  --woody-leather-brown: #78350f;
+  --woody-sheriff-gold: #fbbf24;
+
+  --buzz-space-green: #22c55e;
+  --buzz-space-purple: #9333ea;
+  --buzz-laser-red: #ef4444;
+  --buzz-suit-white: #f8fafc;
+
+  --pizza-planet-red: #ea580c;
+  --alien-neon-green: #84cc16;
+  --etch-red-frame: #b91c1c;
+  --slinky-brass: #d97706;
+  --hamm-pink: #f472b6;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--andy-sky-blue);
+  color: #0f172a;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+/* ======================================================= */
+/* 💥 SCREEN JOLT IMPACT SHAKE ON EXPLOSION                */
+/* ======================================================= */
+.screen-jolt-shake {
+  animation: screenJolt 0.26s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes screenJolt {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-5px, 4px) rotate(-0.6deg); }
+  40% { transform: translate(6px, -4px) rotate(0.7deg); }
+  60% { transform: translate(-4px, 3px) rotate(-0.4deg); }
+  80% { transform: translate(3px, -2px) rotate(0.3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* ======================================================= */
+/* 💥 CARTOON COMIC EXPLOSION & SHOCKWAVE SYSTEM (SMOOTH)  */
+/* ======================================================= */
+.comic-explosion-fx {
+  position: fixed;
+  pointer-events: none;
+  z-index: 350;
+  transform: translate(-50%, -50%);
+}
+
+/* 1. Dramatic Smooth Flash Flare */
+.comic-blast-flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(254, 240, 138, 0.75) 35%, rgba(249, 115, 22, 0.35) 65%, transparent 85%);
+  animation: blastFlashSmooth 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes blastFlashSmooth {
+  0% { transform: translate(-50%, -50%) scale(0.15); opacity: 1; }
+  40% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.85; }
+  100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+}
+
+/* 2. Expanding Cartoon Smoke & Fireball Puffs (Smooth Spring) */
+.comic-smoke-cluster {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.smoke-puff {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 10%, #fef08a 35%, #f97316 75%, #dc2626 100%);
+  border: 3.5px solid #451a03;
+  box-shadow: 0 4px 0 #1e1b4b;
+  animation: smokePuffSmooth 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.smoke-puff.p1 { width: 58px; height: 58px; --tx: -55px; --ty: -45px; animation-delay: 0.01s; }
+.smoke-puff.p2 { width: 68px; height: 68px; --tx: 50px; --ty: -52px; animation-delay: 0.03s; }
+.smoke-puff.p3 { width: 60px; height: 60px; --tx: -60px; --ty: 38px; animation-delay: 0.02s; }
+.smoke-puff.p4 { width: 70px; height: 70px; --tx: 54px; --ty: 42px; animation-delay: 0.04s; }
+.smoke-puff.p5 { width: 52px; height: 52px; --tx: 0px; --ty: -75px; animation-delay: 0.01s; }
+.smoke-puff.p6 { width: 56px; height: 56px; --tx: 0px; --ty: 68px; animation-delay: 0.05s; }
+
+@keyframes smokePuffSmooth {
+  0% {
+    transform: translate(0, 0) scale(0.15);
+    opacity: 1;
+  }
+  45% {
+    transform: translate(var(--tx), var(--ty)) scale(1.35);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(calc(var(--tx) * 1.55), calc(var(--ty) * 1.55)) scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* 3. 18-Point Sharp Jagged Starburst (Smooth Bloom) */
+.comic-blast-starburst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 185px;
+  height: 185px;
+  background: radial-gradient(circle, #ffffff 15%, #fef08a 35%, #f59e0b 60%, #ef4444 85%, #991b1b 100%);
+  clip-path: polygon(
+    50% 0%, 62% 24%, 82% 9%, 76% 32%, 100% 32%, 84% 52%, 98% 74%, 74% 71%, 70% 100%, 50% 84%,
+    30% 100%, 26% 71%, 2% 74%, 16% 52%, 0% 32%, 24% 32%, 18% 9%, 38% 24%
+  );
+  animation: starburstSmooth 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  filter: drop-shadow(0 0 20px #ef4444) drop-shadow(0 0 35px #f59e0b);
+}
+
+@keyframes starburstSmooth {
+  0% { transform: translate(-50%, -50%) scale(0.12) rotate(0deg); opacity: 1; }
+  35% { transform: translate(-50%, -50%) scale(1.6) rotate(25deg); opacity: 1; }
+  70% { transform: translate(-50%, -50%) scale(1.85) rotate(45deg); opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) scale(2.25) rotate(60deg); opacity: 0; }
+}
+
+/* 4. Double Expanding Shockwaves (Smooth Ripple) */
+.comic-shockwave-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.comic-shockwave-ring.ring-1 {
+  border: 7px solid #fde047;
+  box-shadow: 0 0 28px #ef4444, inset 0 0 16px #f59e0b;
+  animation: shockwaveSmooth1 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.comic-shockwave-ring.ring-2 {
+  border: 4px dashed #ef4444;
+  box-shadow: 0 0 22px #fbbf24;
+  animation: shockwaveSmooth2 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+}
+
+@keyframes shockwaveSmooth1 {
+  0% { width: 20px; height: 20px; opacity: 1; border-width: 10px; }
+  100% { width: 280px; height: 280px; opacity: 0; border-width: 1px; }
+}
+
+@keyframes shockwaveSmooth2 {
+  0% { width: 10px; height: 10px; opacity: 1; border-width: 8px; }
+  100% { width: 360px; height: 360px; opacity: 0; border-width: 1.5px; }
+}
+
+/* 5. Radiating Comic Spark Rays (Smooth Float) */
+.comic-sparks-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.spark-ray {
+  position: absolute;
+  font-size: 1.85rem;
+  user-select: none;
+  animation: sparkShootSmooth 0.95s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.spark-ray.r1 { --sx: -95px; --sy: -75px; --sr: -35deg; }
+.spark-ray.r2 { --sx: 90px; --sy: -85px; --sr: 30deg; }
+.spark-ray.r3 { --sx: -105px; --sy: 65px; --sr: -50deg; }
+.spark-ray.r4 { --sx: 100px; --sy: 75px; --sr: 45deg; }
+.spark-ray.r5 { --sx: 0px; --sy: -125px; --sr: 0deg; }
+.spark-ray.r6 { --sx: 0px; --sy: 120px; --sr: 180deg; }
+
+@keyframes sparkShootSmooth {
+  0% { transform: translate(0, 0) scale(0.2) rotate(0deg); opacity: 1; }
+  50% { transform: translate(var(--sx), var(--sy)) scale(1.4) rotate(var(--sr)); opacity: 1; }
+  100% { transform: translate(calc(var(--sx) * 1.3), calc(var(--sy) * 1.3)) scale(0.4) rotate(calc(var(--sr) * 1.5)); opacity: 0; }
+}
+
+/* 6. Giant 3D Extruded Comic Action Word (Elastic Bounce Pop) */
+.comic-impact-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  letter-spacing: 0.08em;
+  color: #fef08a;
+  -webkit-text-stroke: 3.5px #78350f;
+  text-shadow: 
+    0 4px 0 #dc2626,
+    0 8px 0 #991b1b,
+    0 12px 0 #450a0a,
+    0 16px 32px rgba(0, 0, 0, 0.65);
+  white-space: nowrap;
+  animation: wordPopSmooth 1.05s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes wordPopSmooth {
+  0% { transform: translate(-50%, -50%) scale(0.15) rotate(-15deg); opacity: 0; }
+  28% { transform: translate(-50%, -85%) scale(1.45) rotate(8deg); opacity: 1; }
+  65% { transform: translate(-50%, -125%) scale(1.2) rotate(-4deg); opacity: 1; }
+  100% { transform: translate(-50%, -175%) scale(0.95) rotate(2deg); opacity: 0; }
+}
+
+/* 7. Screen Flash Overlay on Huge Hits */
+.comic-screen-flash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(254, 240, 138, 0.4) 0%, rgba(239, 68, 68, 0.2) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 280;
+  animation: screenFlashFade 0.18s ease-out forwards;
+}
+
+@keyframes screenFlashFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ======================================================= */
+/* ✨ STARDUST CURSOR TRAIL                                 */
+/* ======================================================= */
+.cursor-stardust {
+  position: fixed;
+  pointer-events: none;
+  z-index: 290;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 20%, #fde047 60%, #ef4444 100%);
+  box-shadow: 0 0 10px #f59e0b;
+  animation: stardustFade 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes stardustFade {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.1) translate(var(--dx, 0px), var(--dy, 18px)); opacity: 0; }
+}
+
+/* ======================================================= */
+/* 🚀 BUZZ FLYING ACROSS THE SKY WITH JET SMOKE            */
+/* ======================================================= */
+.buzz-flyby-glider {
+  position: fixed;
+  top: 18%;
+  left: -220px;
+  z-index: 240;
+  pointer-events: none;
+  animation: buzzFlyAcross 1.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes buzzFlyAcross {
+  0% {
+    transform: translateX(0) translateY(0) rotate(22deg) scale(0.75);
+    opacity: 0;
+  }
+  12% { opacity: 1; }
+  85% { opacity: 1; }
+  100% {
+    transform: translateX(calc(100vw + 380px)) translateY(-90px) rotate(12deg) scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* ======================================================= */
+/* ☁️ ANDY'S BEDROOM BLUE SKY CLOUD WALLPAPER              */
+/* ======================================================= */
+.andys-bedroom-wallpaper {
+  position: relative;
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.65) 0%, transparent 24%),
+    radial-gradient(circle at 85% 50%, rgba(255, 255, 255, 0.55) 0%, transparent 26%),
+    linear-gradient(180deg, #38bdf8 0%, #60a5fa 45%, #93c5fd 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  transition: transform 0.1s ease-out;
+}
+
+/* Animated Floating Cumulus Clouds */
+.clouds-layer-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.cloud-element {
+  position: absolute;
+  filter: drop-shadow(0 14px 24px rgba(2, 132, 199, 0.35));
+  animation: cloudDrift 45s linear infinite;
+  user-select: none;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(-260px) translateY(0); }
+  50% { transform: translateX(50vw) translateY(-20px); }
+  100% { transform: translateX(calc(100vw + 280px)) translateY(0); }
+}
+
+/* Green Army Paratrooper Ambient Drop */
+.ambient-paratrooper {
+  position: fixed;
+  top: -100px;
+  right: 12%;
+  z-index: 15;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: paratrooperDescent 22s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ambient-paratrooper:hover {
+  transform: scale(1.35) rotate(22deg) !important;
+}
+
+@keyframes paratrooperDescent {
+  0% {
+    transform: translateY(0) translateX(0) rotate(-6deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  50% {
+    transform: translateY(50vh) translateX(-40px) rotate(8deg);
+  }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(115vh) translateX(20px) rotate(-4deg);
+    opacity: 0;
+  }
+}
+
+/* Second Paratrooper on Left */
+.ambient-paratrooper-left {
+  position: fixed;
+  top: -120px;
+  left: 8%;
+  z-index: 15;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: paratrooperDescentLeft 28s ease-in-out infinite 10s;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ambient-paratrooper-left:hover {
+  transform: scale(1.35) rotate(-22deg) !important;
+}
+
+@keyframes paratrooperDescentLeft {
+  0% {
+    transform: translateY(0) translateX(0) rotate(8deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  50% {
+    transform: translateY(55vh) translateX(50px) rotate(-6deg);
+  }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(115vh) translateX(-30px) rotate(6deg);
+    opacity: 0;
+  }
+}
+
+/* ======================================================= */
+/* ⚡ BUZZ LASER BEAM BLAST EFFECT                          */
+/* ======================================================= */
+.laser-beam-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 250;
+  background: radial-gradient(circle at 75% 25%, rgba(239, 68, 68, 0.45) 0%, rgba(239, 68, 68, 0.15) 40%, transparent 70%);
+  animation: laserPulse 0.45s ease-out forwards;
+}
+
+.laser-beam-line {
+  position: fixed;
+  top: 32%;
+  left: 0;
+  right: 0;
+  height: 9px;
+  background: linear-gradient(90deg, transparent 0%, #ef4444 20%, #fef08a 50%, #ef4444 80%, transparent 100%);
+  box-shadow: 0 0 30px #ef4444, 0 0 60px #dc2626;
+  animation: laserSweep 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes laserPulse {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes laserSweep {
+  0% { transform: scaleX(0); opacity: 1; }
+  50% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1.2); opacity: 0; }
+}
+
+/* ======================================================= */
+/* 🚗 FOREGROUND PARADE ROAD & MARCHING TOYS PATROL        */
+/* ======================================================= */
+.foreground-toy-road {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, #d97706 0%, #b45309 45%, #78350f 100%);
+  border-top: 4.5px solid #fef08a;
+  box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.45);
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1.5rem 0.55rem;
+}
+
+.road-track-dashed {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-top: 3px dashed rgba(255, 255, 255, 0.65);
+  pointer-events: none;
+}
+
+.marching-patrol-container {
+  position: absolute;
+  top: -54px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  pointer-events: none;
+  padding: 0 2rem;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.marching-patrol-container::-webkit-scrollbar {
+  display: none;
+}
+
+.patrol-toy-item {
+  cursor: pointer;
+  pointer-events: auto;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toy-token-pedestal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  user-select: none;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toy-token-pedestal:hover {
+  transform: translateY(-12px) scale(1.18) rotate(3deg);
+}
+
+.toy-token-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3.5px solid #ffffff;
+  box-shadow: 0 4px 0 #b45309, 0 8px 18px rgba(0, 0, 0, 0.4);
+  background: radial-gradient(circle, #ffffff 65%, #f1f5f9 100%);
+  object-fit: contain;
+  padding: 3px;
+}
+
+.toy-token-name {
+  font-family: var(--font-gill), var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(180deg, #92400e 0%, #78350f 100%);
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  border: 1.5px solid #fef08a;
+  box-shadow: 0 2px 0 #451a03;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* ======================================================= */
+/* 🔤 ALPHABET WOODEN TOY BLOCKS TOPBAR (D-Y-A-K-S-A)     */
+/* ======================================================= */
+.toy-header-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  border-bottom: 5px solid #f59e0b;
+  box-shadow: 0 8px 0 #b45309, 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+.toy-header-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.alphabet-blocks-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.block-cube {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #ffffff;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.28);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.block-cube:hover {
+  transform: translateY(-8px) rotate(16deg) scale(1.25);
+}
+
+.nav-pillbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f8fafc;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 2.5px solid #cbd5e1;
+}
+
+.nav-pill-item {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-pill-item:hover {
+  background: #fef08a;
+  color: #854d0e;
+  transform: translateY(-3px) scale(1.1) rotate(-1.5deg);
+  box-shadow: 0 4px 0 #ca8a04;
+}
+
+/* ======================================================= */
+/* 🌟 AUTHENTIC 3D PIXAR TOY STORY HERO LOGO & TYPOGRAPHY  */
+/* ======================================================= */
+.toy-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 3rem;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+
+.toy-3d-hero-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Disney · Pixar Script Tag (Matches Image 3) */
+.toy-disney-pixar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+  user-select: none;
+}
+
+.toy-disney-script {
+  font-family: var(--font-disney), cursive;
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  line-height: 0.9;
+  color: #ffffff;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    0 0 16px rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.02em;
+}
+
+.toy-pixar-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffffff;
+  margin: 0 0.1rem;
+}
+
+.toy-pixar-slab {
+  font-family: var(--font-gill), "Arial Black", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.2rem, 2.6vw, 1.85rem);
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    0 0 12px rgba(255, 255, 255, 0.7);
+}
+
+.toy-3d-intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 60%, #b91c1c 100%);
+  border: 3.5px solid #ffffff;
+  border-radius: 999px;
+  padding: 0.35rem 1.15rem;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  box-shadow: 0 6px 0 #7f1d1d, 0 12px 24px rgba(0, 0, 0, 0.28);
+  transform: rotate(-2deg);
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+/* TOP WORD: "DYAKSA" (Exact Replica of "TOY" in Toy Story Logo Image 3) */
+.toy-3d-title-dyaksa {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-agent-orange), var(--font-gill), var(--font-lilita), 'Arial Black', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.6rem, 10.8vw, 7.2rem);
+  line-height: 0.94;
+  letter-spacing: 0.04em;
+  color: #FFE600;
+  -webkit-text-stroke: 4.5px #154bb3;
+  paint-order: stroke fill;
+  text-transform: uppercase;
+  text-shadow:
+    0 2px 0 #216ef3,
+    0 4px 0 #154bb3,
+    0 6px 0 #0f3c96,
+    0 8px 0 #0b2f7a,
+    0 11px 0 #07225c,
+    0 14px 0 #04143a,
+    0 18px 28px rgba(4, 20, 58, 0.65);
+  transform: perspective(600px) rotateX(4deg);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+  margin-left: 2px;
+}
+
+.toy-letter {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toy-letter:hover {
+  transform: translateY(-8px) scale(1.12) rotate(4deg) !important;
+  color: #fffb8f !important;
+}
+
+.toy-letter-d  { transform: rotate(-3.5deg); }
+.toy-letter-y  { transform: rotate(2.5deg) translateY(-2px); }
+.toy-letter-a1 { transform: rotate(-1.5deg); }
+.toy-letter-k  { transform: rotate(3deg) translateY(2px); }
+.toy-letter-s  { transform: rotate(-2.5deg); }
+.toy-letter-a2 { transform: rotate(3.5deg) translateY(-1px); }
+
+.toy-3d-title-dyaksa:hover {
+  transform: perspective(600px) rotateX(0deg) scale(1.02);
+}
+
+/* THE ICONIC TILTED RED 3D BILLBOARD PLAQUE ("STORY" BANNER) */
+.toy-story-banner-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: -0.95rem; /* Authentic Toy Story logo overlap */
+  background: linear-gradient(180deg, #e52521 0%, #c91519 65%, #9b0c10 100%);
+  padding: 0.45rem 2.2rem 0.65rem;
+  border-radius: 6px;
+  box-shadow:
+    0 4px 0 #78080b,
+    0 8px 0 #4f0305,
+    0 14px 28px rgba(0, 0, 0, 0.45);
+  transform: perspective(600px) rotateX(10deg) rotate(-2deg);
+  border: 2.5px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 4px solid #4f0305;
+  clip-path: polygon(2.5% 0%, 97.5% 0%, 100% 100%, 0% 100%);
+  z-index: 2;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toy-story-banner-box:hover {
+  transform: perspective(600px) rotateX(2deg) rotate(0deg) scale(1.03);
+}
+
+/* BOTTOM WORD: "WIRATARA" (Exact Gill Sans Ultra Bold 3D Letters) */
+.toy-3d-title-wira {
+  display: inline-block;
+  font-family: var(--font-gill), 'Arial Black', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.9rem, 5.8vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.12em;
+  color: #ffe600;
+  -webkit-text-stroke: 2px #6b060a;
+  paint-order: stroke fill;
+  text-transform: uppercase;
+  text-shadow:
+    0 1px 0 #fffab3,
+    0 2.5px 0 #eab308,
+    0 4px 0 #ca8a04,
+    0 5.5px 0 #854d0e,
+    0 7.5px 0 #4f0305,
+    0 12px 18px rgba(0, 0, 0, 0.55);
+}
+
+.toy-3d-status-deck {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.toy-3d-status-label {
+  background: linear-gradient(180deg, #fef08a 0%, #fde047 50%, #eab308 100%);
+  color: #78350f;
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  padding: 0.45rem 1.25rem;
+  border-radius: 18px 8px 18px 8px;
+  border: 3.5px solid #ca8a04;
+  box-shadow: 0 6px 0 #854d0e, 0 12px 22px rgba(0, 0, 0, 0.18);
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.toy-3d-status-val {
+  background: #ffffff;
+  color: #1d4ed8;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.08rem;
+  padding: 0.5rem 1.45rem;
+  border-radius: 22px 10px 22px 10px;
+  border: 3.5px solid #2563eb;
+  box-shadow: 0 6px 0 #1e3a8a, 0 14px 26px rgba(0, 0, 0, 0.16);
+}
+
+/* ======================================================= */
+/* 🚀 BUZZ LIGHTYEAR 3D BLISTER PACKAGING WIDGET           */
+/* ======================================================= */
+.toy-blister-hanger-tab {
+  width: 140px;
+  height: 28px;
+  margin: 0 auto -6px;
+  background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 100%);
+  border: 3.5px solid #64748b;
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -4px 0 #475569;
+  position: relative;
+  z-index: 2;
+}
+
+.toy-blister-hanger-hole {
+  width: 46px;
+  height: 10px;
+  background: #0f172a;
+  border-radius: 999px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.buzz-chest-panel {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 40%, #e2e8f0 100%);
+  border: 6px solid #22c55e;
+  border-radius: 36px 18px 38px 20px;
+  padding: 1.8rem;
+  box-shadow: 0 16px 0 #15803d, 0 32px 65px rgba(0, 0, 0, 0.28);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buzz-chest-panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 0 #15803d, 0 38px 75px rgba(34, 197, 94, 0.35);
+}
+
+.toy-blister-gloss-reflection {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.28) 22%,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  pointer-events: none;
+  z-index: 8;
+  border-radius: 30px;
+}
+
+/* Star Command Hazard Stripes Header */
+.hazard-stripes-bar {
+  height: 20px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #fbbf24,
+    #fbbf24 14px,
+    #0f172a 14px,
+    #0f172a 28px
+  );
+  border-radius: 10px;
+  border: 2.5px solid #0f172a;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Buzz Oval Chest Push Buttons */
+.buzz-oval-buttons {
+  display: flex;
+  gap: 0.95rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.buzz-btn-oval {
+  width: 70px;
+  height: 42px;
+  border-radius: 999px;
+  border: 3.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buzz-btn-red {
+  background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+  box-shadow: 0 6px 0 #7f1d1d, 0 10px 18px rgba(239, 68, 68, 0.4);
+}
+
+.buzz-btn-green {
+  background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+  box-shadow: 0 6px 0 #14532d, 0 10px 18px rgba(34, 197, 94, 0.4);
+}
+
+.buzz-btn-blue {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 6px 0 #1e3a8a, 0 10px 18px rgba(59, 130, 246, 0.4);
+}
+
+.buzz-btn-oval:hover {
+  transform: translateY(-5px) scale(1.15);
+}
+
+.buzz-btn-oval:active {
+  transform: translateY(4px) scale(0.96);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ======================================================= */
+/* 🤠 SHERIFF WOODY COWHIDE & BRASS BADGE WIDGET           */
+/* ======================================================= */
+.woody-sheriff-widget {
+  background: 
+    repeating-linear-gradient(45deg, #fef08a 0, #fef08a 12px, #f59e0b 12px, #f59e0b 24px);
+  border: 5px solid #78350f;
+  border-radius: 36px 18px 38px 22px;
+  padding: 1.6rem;
+  box-shadow: 0 12px 0 #451a03, 0 24px 50px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.woody-sheriff-widget:hover {
+  transform: rotate(-1deg) translateY(-5px);
+}
+
+/* Cowhide Pattern Overlay */
+.cowhide-vest-patch {
+  background: #ffffff;
+  background-image: 
+    radial-gradient(#1e1b4b 35%, transparent 36%),
+    radial-gradient(#1e1b4b 35%, transparent 36%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  border-radius: 20px;
+  border: 3.5px dashed #78350f;
+  padding: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* 3D Brass Sheriff Badge Star */
+.sheriff-badge-brass {
+  width: 78px;
+  height: 78px;
+  background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
+  clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0% 38%, 37% 38%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 6px 0 #78350f);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sheriff-badge-brass:hover {
+  transform: scale(1.35) rotate(20deg);
+}
+
+/* ======================================================= */
+/* 🖍️ MAGIC ETCH A SKETCH RETRO DRAWING WIDGET             */
+/* ======================================================= */
+.etch-sketch-widget {
+  background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%);
+  border: 6px solid #7f1d1d;
+  border-radius: 40px 24px 44px 28px;
+  padding: 1.8rem;
+  box-shadow: 0 14px 0 #450a0a, 0 30px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.etch-screen-frame {
+  background: #94a3b8;
+  border: 5px solid #475569;
+  border-radius: 24px;
+  padding: 1.8rem;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.etch-white-knob {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 40%, #e2e8f0 70%, #cbd5e1 100%);
+  border: 4.5px solid #94a3b8;
+  box-shadow: 0 7px 0 #64748b, 0 12px 22px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.etch-white-knob:hover {
+  transform: scale(1.25);
+}
+
+/* ======================================================= */
+/* 🍕 PIZZA PLANET ROCKET CLAW MACHINE ARCADE CABINET      */
+/* ======================================================= */
+.pizza-planet-cabinet-widget {
+  background: linear-gradient(180deg, #ea580c 0%, #c2410c 40%, #9a3412 100%);
+  border: 6px solid #7c2d12;
+  border-radius: 42px 24px 46px 28px;
+  padding: 2rem;
+  box-shadow: 0 16px 0 #431407, 0 35px 70px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rocket Marquee Sign */
+.rocket-marquee-top {
+  background: #fef08a;
+  border: 3.5px solid #ca8a04;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  color: #78350f;
+  font-weight: 900;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 5px 0 #854d0e;
+  margin-bottom: 1.2rem;
+  animation: marqueeGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes marqueeGlow {
+  0% { box-shadow: 0 5px 0 #854d0e, 0 0 15px rgba(254, 240, 138, 0.4); }
+  100% { box-shadow: 0 5px 0 #854d0e, 0 0 30px rgba(254, 240, 138, 0.9); }
+}
+
+/* ======================================================= */
+/* 🐷 HAMM PIGGY BANK & MR. POTATO HEAD ACCESSORY BAR      */
+/* ======================================================= */
+.hamm-coin-slot-card {
+  background: #ffffff;
+  border: 4.5px solid #f472b6;
+  border-radius: 32px 16px 36px 20px;
+  padding: 1.6rem;
+  box-shadow: 0 10px 0 #db2777, 0 22px 45px rgba(0, 0, 0, 0.16);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hamm-coin-slot-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.potato-head-card {
+  background: #ffffff;
+  border: 4.5px solid #d97706;
+  border-radius: 32px 16px 36px 20px;
+  padding: 1.6rem;
+  box-shadow: 0 10px 0 #92400e, 0 22px 45px rgba(0, 0, 0, 0.16);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.potato-head-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+/* ======================================================= */
+/* 🎵 WHEEZY'S EQUALIZER ANIMATED BARS                     */
+/* ======================================================= */
+.equalizer-container {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+}
+
+.equalizer-bar {
+  width: 4px;
+  background: #22c55e;
+  border-radius: 2px;
+  animation: eqPulse 0.8s ease-in-out infinite alternate;
+}
+
+.equalizer-bar:nth-child(1) { height: 60%; animation-delay: 0.1s; }
+.equalizer-bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
+.equalizer-bar:nth-child(3) { height: 40%; animation-delay: 0.2s; }
+.equalizer-bar:nth-child(4) { height: 80%; animation-delay: 0.4s; }
+
+@keyframes eqPulse {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+/* ======================================================= */
+/* 🪵 ANDY'S WOODEN FLOOR FOOTER                           */
+/* ======================================================= */
+.andys-wood-floor-footer {
+  margin-top: 6rem;
+  background: linear-gradient(180deg, #b45309 0%, #92400e 40%, #78350f 100%);
+  border-top: 6px solid #f59e0b;
+  padding: 4.5rem 1.5rem 7rem;
+  text-align: center;
+  color: #fef08a;
+  box-shadow: inset 0 14px 28px rgba(0, 0, 0, 0.38);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .nav-pillbox-container {
+    display: none;
+  }
+}
+
+/* ======================================================= */
+/* 💥 TOY STORY EXPLOSIVE COMBO METER HUD                  */
+/* ======================================================= */
+.toy-combo-badge {
+  position: fixed;
+  top: 5.5rem;
+  right: 1.5rem;
+  z-index: 260;
+  background: linear-gradient(135deg, #ef4444 0%, #f97316 50%, #f59e0b 100%);
+  border: 4px solid #ffffff;
+  border-radius: 999px;
+  padding: 0.55rem 1.35rem;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 0 #991b1b, 0 12px 28px rgba(239, 68, 68, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  animation: comboPulse 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) alternate infinite;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.toy-combo-badge:hover {
+  transform: scale(1.1) rotate(-2deg);
+}
+
+@keyframes comboPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.08) rotate(3deg); }
+}
+
+/* ======================================================= */
+/* 🧨 TNT DETONATOR & ROCKET LAUNCH CONTROL WIDGET         */
+/* ======================================================= */
+.tnt-detonator-box {
+  background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+  border: 5px solid #7f1d1d;
+  border-radius: 28px 14px 28px 14px;
+  padding: 1.25rem 1.6rem;
+  color: #ffffff;
+  box-shadow: 0 10px 0 #450a0a, 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tnt-detonator-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 0 #450a0a, 0 26px 50px rgba(220, 38, 38, 0.4);
+}
+
+.tnt-detonator-box:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #450a0a !important;
+}
+
+/* Danger hazard stripes accent */
+.tnt-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    #fbbf24,
+    #fbbf24 10px,
+    #1e1b4b 10px,
+    #1e1b4b 20px
+  );
+  height: 8px;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 0.4rem;
+}
+
+/* ======================================================= */
+/* 🏀 BOUNCING PIXAR LUXO BALL INTERACTIVE TOY             */
+/* ======================================================= */
+.bouncing-luxo-ball-toy {
+  position: fixed;
+  bottom: 96px;
+  left: 24px;
+  z-index: 96;
+  cursor: pointer;
+  user-select: none;
+  animation: luxoIdleBounce 2.2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.3));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bouncing-luxo-ball-toy:hover {
+  transform: scale(1.25) rotate(20deg);
+}
+
+.bouncing-luxo-ball-toy:active {
+  transform: scale(0.88) translateY(10px);
+}
+
+@keyframes luxoIdleBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  40% {
+    transform: translateY(-42px) scale(0.92, 1.12);
+  }
+  50% {
+    transform: translateY(-46px) scale(1.05, 0.95);
+  }
+  60% {
+    transform: translateY(-38px) scale(0.96, 1.08);
+  }
+  85% {
+    transform: translateY(0) scale(1.2, 0.82);
+  }
+  92% {
+    transform: translateY(-6px) scale(0.98, 1.04);
+  }
+}
+
+/* ======================================================= */
+/* 🪂 AMBIENT GREEN ARMY PARATROOPERS SKY DESCENT          */
+/* ======================================================= */
+.ambient-paratrooper {
+  position: fixed;
+  z-index: 4; /* Keeps paratrooper behind main content so it never obscures hero text */
+  pointer-events: none;
+  animation: paratrooperDescent 16s linear infinite;
+}
+
+.ambient-paratrooper-left {
+  position: fixed;
+  z-index: 4;
+  pointer-events: none;
+  animation: paratrooperDescent 22s linear infinite 5s;
+}
+
+/* ======================================================= */
+/* ✍️ ANDY'S AUTHENTIC SIGNATURE CAPSULE BADGE (IMAGE 4)   */
+/* ======================================================= */
+.andy-signature-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  background: #fef08a;
+  color: #78350f;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: 0.22em;
+  padding: 0.5rem 2.5rem;
+  border-radius: 999px;
+  border: 4px solid #eab308;
+  box-shadow: 0 6px 0 #ca8a04, 0 12px 24px rgba(0, 0, 0, 0.18);
+  margin-bottom: 1.2rem;
+  user-select: none;
+  transform: rotate(-1.5deg);
+}
+
+.andy-backwards-n {
+  display: inline-block;
+  font-family: inherit;
+  font-weight: inherit;
+  transform: none;
+  color: #78350f;
+}
+
+@keyframes paratrooperDescent {
+  0% {
+    top: -120px;
+    transform: translateX(0) rotate(-14deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(35px) rotate(14deg);
+  }
+  50% {
+    transform: translateX(-30px) rotate(-12deg);
+  }
+  75% {
+    transform: translateX(25px) rotate(10deg);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100vh + 100px);
+    transform: translateX(0) rotate(-6deg);
+    opacity: 0;
+  }
+}
+
+/* ======================================================= */
+/* 💥 TACTILE SQUASH & SPRING PHYSICS FOR BUTTONS & CARDS   */
+/* ======================================================= */
+button, .patrol-toy-item, .nav-pill-item, .block-cube, .sheriff-badge-brass {
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+}
+
+button:hover, .patrol-toy-item:hover, .nav-pill-item:hover, .block-cube:hover {
+  transform: translateY(-4px) scale(1.06);
+}
+
+button:active, .patrol-toy-item:active, .nav-pill-item:active, .block-cube:active {
+  transform: translateY(3px) scale(0.94, 1.08) !important;
+}
+
+/* ======================================================= */
+/* 📱 MOBILE RESPONSIVE ADAPTATION (TABLET & SMARTPHONES)   */
+/* ======================================================= */
+@media (max-width: 980px) {
+  .toy-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.4rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. Header Bar: Compact & Horizontal Swipe Nav */
+  .toy-header-inner {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.65rem !important;
+    padding: 0.6rem 0.85rem !important;
+  }
+
+  .toy-header-inner > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .alphabet-blocks-brand {
+    gap: 0.28rem;
+  }
+
+  .alphabet-blocks-brand .block-cube {
+    width: 32px;
+    height: 32px;
+    font-size: 0.98rem;
+    border-radius: 8px;
+    border-width: 2px;
+  }
+
+  .nav-pillbox-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.35rem 0.5rem !important;
+    gap: 0.4rem !important;
+    justify-content: flex-start !important;
+  }
+
+  .nav-pillbox-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-pill-item {
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.82rem !important;
+    flex-shrink: 0;
+  }
+
+  /* 2. Main Page Padding & Container */
+  main {
+    padding: 1.2rem 1rem 7.5rem !important;
+  }
+
+  /* 3. Hero Typography on Mobile */
+  .toy-3d-title-dyaksa {
+    -webkit-text-stroke: 3.5px #154bb3 !important;
+    text-shadow:
+      0 2px 0 #216ef3,
+      0 3px 0 #154bb3,
+      0 5px 0 #0f3c96,
+      0 7px 0 #0b2f7a,
+      0 9px 0 #07225c,
+      0 14px 22px rgba(4, 20, 58, 0.65) !important;
+  }
+
+  .toy-story-banner-box {
+    margin-top: -0.65rem !important;
+    padding: 0.35rem 1.3rem 0.5rem !important;
+  }
+
+  .toy-3d-title-wira {
+    -webkit-text-stroke: 1.8px #6b060a !important;
+  }
+
+  .toy-3d-status-deck {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.45rem !important;
+    width: 100%;
+  }
+
+  .toy-3d-status-label {
+    font-size: 0.96rem !important;
+    padding: 0.35rem 0.95rem !important;
+  }
+
+  .toy-3d-status-val {
+    font-size: 0.92rem !important;
+    padding: 0.4rem 1rem !important;
+    width: 100%;
+    word-break: break-word;
+  }
+
+  /* 4. Woody Voice Box Widget Mobile */
+  .woody-sheriff-widget {
+    padding: 1.15rem !important;
+  }
+
+  .woody-sheriff-widget > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.85rem !important;
+  }
+
+  .woody-sheriff-widget > div:first-child > div:last-child {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* 5. TNT Detonator Box Mobile */
+  .tnt-detonator-box {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.85rem !important;
+    padding: 1.1rem !important;
+  }
+
+  .tnt-detonator-box button {
+    width: 100% !important;
+  }
+
+  /* 6. Buzz Action Figure Card Mobile */
+  .toy-action-figure-card {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .buzz-controls-row {
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+  }
+
+  /* 7. Bottom Foreground Parade Road Mobile Carousel */
+  .foreground-toy-road {
+    height: 74px !important;
+    padding: 0 0.85rem 0.4rem !important;
+  }
+
+  .marching-patrol-container {
+    position: absolute !important;
+    top: -50px !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 0.65rem !important;
+    overflow-x: auto !important;
+    padding: 0 0.85rem !important;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .marching-patrol-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .toy-token-pedestal {
+    flex-shrink: 0 !important;
+  }
+
+  .toy-token-img {
+    width: 48px !important;
+    height: 48px !important;
+    border-width: 2.5px !important;
+    background: radial-gradient(circle, #ffffff 65%, #f1f5f9 100%) !important;
+    object-fit: contain !important;
+    padding: 2px !important;
+  }
+
+  .toy-token-name {
+    font-size: 0.62rem !important;
+    padding: 0.1rem 0.45rem !important;
+  }
+
+  /* Keep the red/green/blue Buzz controls inside the blister panel on narrow screens. */
+  .buzz-chest-panel > div:nth-of-type(3) {
+    flex-wrap: wrap !important;
+    gap: 0.65rem !important;
+  }
+
+  .buzz-chest-panel > div:nth-of-type(3) > div {
+    min-width: 0;
+  }
+
+  .buzz-oval-buttons {
+    width: 100%;
+    gap: 0.45rem;
+  }
+
+  .buzz-oval-buttons .buzz-btn-oval {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+
+  .bouncing-luxo-ball-toy {
+    bottom: 88px !important;
+    left: 14px !important;
+    transform-origin: center bottom;
+  }
+
+  .toy-combo-badge {
+    top: auto !important;
+    bottom: 74px !important;
+    right: 14px !important;
+    padding: 0.35rem 0.85rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* 8. Etch A Sketch Mobile */
+  .etch-sketch-widget {
+    padding: 1.2rem !important;
+    border-radius: 24px !important;
+  }
+
+  .etch-screen-frame {
+    padding: 1.15rem !important;
+  }
+
+  /* 9. Contact & Form Mobile */
+  form {
+    padding: 1.3rem !important;
+    border-radius: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .alphabet-blocks-brand .block-cube {
+    width: 27px;
+    height: 27px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+  }
+
+  .toy-disney-pixar-tag {
+    font-size: 0.95rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .toy-3d-title-dyaksa {
+    font-size: 2.85rem !important;
+  }
+
+  .toy-story-banner-box {
+    padding: 0.3rem 1.05rem 0.45rem !important;
+  }
+
+  .toy-3d-title-wira {
+    font-size: 1.55rem !important;
+  }
+}
+
+/* ======================================================= */
+/* 🏷️ 9-PART PORTFOLIO SECTION ENHANCEMENT STYLES           */
+/* ======================================================= */
+
+.toy-section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.4rem;
+  background: #ffffff;
+  border: 3.5px solid #f59e0b;
+  border-radius: 30px 10px 30px 10px;
+  box-shadow: 0 5px 0 #b45309, 0 10px 20px rgba(0, 0, 0, 0.12);
+  color: #78350f;
+  font-family: var(--font-gill), var(--font-display);
+  font-weight: 900;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+.toy-section-heading {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  text-shadow: 0 3px 0 #ffffff;
+}
+
+.toy-card-surface {
+  background: #ffffff;
+  border-radius: 32px 16px 36px 18px;
+  box-shadow: 0 10px 0 #0284c7, 0 22px 45px rgba(0, 0, 0, 0.14);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.toy-card-surface:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.toy-edu-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.toy-edu-card {
+  position: relative;
+  background: #ffffff;
+  border: 4.5px solid #f59e0b;
+  border-radius: 28px 14px 28px 14px;
+  padding: 1.6rem;
+  box-shadow: 0 8px 0 #b45309, 0 18px 36px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toy-edu-card:hover {
+  transform: translateY(-5px) scale(1.015);
+}
+
+.toy-cert-card {
+  background: #ffffff;
+  border: 4.5px solid #ca8a04;
+  border-radius: 28px 14px 28px 14px;
+  padding: 1.6rem;
+  box-shadow: 0 8px 0 #854d0e, 0 18px 36px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toy-cert-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.toy-skill-battery {
+  background: #ffffff;
+  border: 3.5px solid #e2e8f0;
+  border-radius: 20px 8px 20px 8px;
+  padding: 1.25rem;
+  box-shadow: 0 6px 0 #cbd5e1, 0 12px 24px rgba(0,0,0,0.06);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toy-skill-battery:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+  box-shadow: 0 8px 0 #0284c7, 0 16px 30px rgba(2, 132, 199, 0.18);
+}
+
+.toy-meter-bar {
+  height: 14px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  border: 2px solid #94a3b8;
+  overflow: hidden;
+  position: relative;
+}
+
+.toy-meter-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e 0%, #10b981 60%, #38bdf8 100%);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
+  position: relative;
 }
