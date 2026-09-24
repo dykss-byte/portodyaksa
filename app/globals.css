@@ -1686,6 +1686,102 @@ button:active, .patrol-toy-item:active, .nav-pill-item:active, .block-cube:activ
   }
 }
 
+/* Custom Helper Classes for Clean Mobile Layout */
+.etch-biodata-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.etch-biodata-label {
+  color: #78350f;
+  min-width: 145px;
+  flex-shrink: 0;
+  font-weight: 900;
+}
+
+.blister-figures-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.3rem;
+  z-index: 10;
+}
+
+.blister-boot-sole-row {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.55rem 1rem;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid #22c55e;
+  box-shadow: 0 4px 0 #15803d;
+  z-index: 10;
+}
+
+@media (max-width: 640px) {
+  .toy-identity-card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .toy-identity-card-header > div:last-child {
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .toy-identity-tags-container {
+    justify-content: center !important;
+  }
+
+  .blister-card-container {
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 0.85rem !important;
+  }
+
+  .blister-boot-sole-row {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin-top: 0.85rem !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
+  }
+  .blister-boot-sole-row button {
+    width: 100% !important;
+  }
+
+  .blister-figures-row {
+    gap: 0.4rem !important;
+  }
+  .blister-figures-row img {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .etch-biodata-item {
+    flex-direction: column !important;
+    gap: 0.15rem !important;
+  }
+  .etch-biodata-label {
+    min-width: 0 !important;
+    font-size: 0.82rem !important;
+  }
+}
+
 /* ======================================================= */
 /* 🏷️ 9-PART PORTFOLIO SECTION ENHANCEMENT STYLES           */
 /* ======================================================= */

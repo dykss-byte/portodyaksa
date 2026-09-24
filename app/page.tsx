@@ -1500,7 +1500,7 @@ export default function Home() {
 
             {/* OFFICIAL IDENTITY & CTA BUTTONS (SESUAI STANDAR BAGIAN 2 DENGAN FOTO PROFESIONAL BESAR & JELAS) */}
             <div style={{ marginTop: "1.4rem", background: "#ffffff", border: "4px solid #f59e0b", borderRadius: "24px", padding: "1.3rem 1.5rem", boxShadow: "0 8px 0 #b45309, 0 16px 32px rgba(0,0,0,0.14)", maxWidth: "650px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1rem", flexWrap: "wrap" }}>
+              <div className="toy-identity-card-header" style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1rem", flexWrap: "wrap" }}>
                 <div style={{ position: "relative", width: "112px", height: "112px", borderRadius: "22px", overflow: "hidden", border: "4px solid #f59e0b", boxShadow: "0 6px 0 #b45309, 0 10px 20px rgba(0,0,0,0.18)", flexShrink: 0, background: "#1e3a8a" }}>
                   <img
                     src="/dyaksa_photo.png"
@@ -1518,7 +1518,7 @@ export default function Home() {
                   <div style={{ fontSize: "0.88rem", color: "#16a34a", fontWeight: 800, marginTop: "0.25rem" }}>
                     Siswa Rekayasa Perangkat Lunak (RPL) · SMKN 1 Jenangan, Ponorogo
                   </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", marginTop: "0.45rem" }}>
+                  <div className="toy-identity-tags-container" style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", marginTop: "0.45rem" }}>
                     <span style={{ background: "#fef08a", color: "#78350f", fontSize: "0.74rem", fontWeight: 900, padding: "0.15rem 0.6rem", borderRadius: "999px", border: "1px solid #eab308" }}>
                       📍 Asli Ponorogo
                     </span>
@@ -1542,7 +1542,7 @@ export default function Home() {
 
             {/* SHERIFF WOODY COWHIDE & BRASS BADGE WIDGET */}
             <div className="woody-sheriff-widget" style={{ marginTop: "1.6rem" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                   <div className="sheriff-badge-brass" onClick={handlePullString} title="Klik Bintang Sheriff Woody!">
                     <span style={{ fontWeight: 900, color: "#78350f", fontSize: "0.75rem", letterSpacing: "0.05em" }}>SHERIFF</span>
@@ -1696,6 +1696,7 @@ export default function Home() {
 
             {/* 3D Action Figure Blister Card with Dyaksa Wiratara & Andy Signature */}
             <div
+              className="blister-card-container"
               style={{
                 position: "relative",
                 width: "100%",
@@ -1755,7 +1756,7 @@ export default function Home() {
               </div>
 
               {/* 3D Toy Figures in Card: Woody, Dyaksa's Real Photo & Buzz Avatar */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginTop: "0.3rem", zIndex: 10 }}>
+              <div className="blister-figures-row">
                 <img
                   src="/characters/woody.png"
                   alt="Woody"
@@ -1840,24 +1841,7 @@ export default function Home() {
               </div>
 
               {/* Sole of the Toy Boot with Andy's Sharpie Marker Signature */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "0.75rem",
-                  left: "0.75rem",
-                  right: "0.75rem",
-                  background: "rgba(255,255,255,0.95)",
-                  backdropFilter: "blur(8px)",
-                  padding: "0.55rem 1rem",
-                  borderRadius: "18px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  border: "3px solid #22c55e",
-                  boxShadow: "0 4px 0 #15803d",
-                  zIndex: 10,
-                }}
-              >
+              <div className="blister-boot-sole-row">
                 <div>
                   <span style={{ fontSize: "0.72rem", fontWeight: 900, color: "#15803d", display: "block", fontFamily: "var(--font-display)" }}>
                     PROPERTI KAMAR DYAKSA:
@@ -1895,7 +1879,7 @@ export default function Home() {
             </div>
 
             {/* Wheezy Lo-Fi Jukebox Bar */}
-            <div style={{ marginTop: "1rem", background: "#ffffff", border: "2.5px solid #38bdf8", borderRadius: "18px", padding: "0.85rem 1.1rem", display: "flex", alignItems: "center", justifyContent: "space-between", boxShadow: "0 4px 0 #0284c7" }}>
+            <div style={{ marginTop: "1rem", background: "#ffffff", border: "2.5px solid #38bdf8", borderRadius: "18px", padding: "0.85rem 1.1rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "0.6rem", boxShadow: "0 4px 0 #0284c7" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <WheezyFigure size={34} />
                 <div>
@@ -1939,7 +1923,7 @@ export default function Home() {
         <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem", marginTop: "2rem" }}>
           {/* Hamm Piggy Bank Coin Counter Widget */}
           <div className="hamm-coin-slot-card">
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.85rem" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.6rem", marginBottom: "0.85rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                 <HammFigure size={48} />
                 <div>
@@ -1972,7 +1956,7 @@ export default function Home() {
 
           {/* Forky Handmade Craft Banner Widget */}
           <div className="potato-head-card">
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.85rem" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.6rem", marginBottom: "0.85rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                 <ForkyFigure size={50} />
                 <div>
@@ -2106,28 +2090,28 @@ export default function Home() {
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem", fontSize: "0.95rem", color: "#1e293b", fontWeight: 700 }}>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                      <span style={{ color: "#78350f", width: "145px", flexShrink: 0 }}>TTL:</span>
+                    <div className="etch-biodata-item">
+                      <span className="etch-biodata-label">TTL:</span>
                       <strong style={{ color: "#0f172a" }}>Ponorogo, 03 Maret 2009</strong>
                     </div>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                      <span style={{ color: "#78350f", width: "145px", flexShrink: 0 }}>Domisili:</span>
+                    <div className="etch-biodata-item">
+                      <span className="etch-biodata-label">Domisili:</span>
                       <strong style={{ color: "#0f172a" }}>Ponorogo, Jawa Timur</strong>
                     </div>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                      <span style={{ color: "#78350f", width: "145px", flexShrink: 0 }}>Instagram:</span>
+                    <div className="etch-biodata-item">
+                      <span className="etch-biodata-label">Instagram:</span>
                       <a href="https://instagram.com/dyaksaaovr" target="_blank" rel="noreferrer" style={{ color: "#be185d", fontWeight: 900, textDecoration: "underline" }}>
                         @dyaksaaovr
                       </a>
                     </div>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                      <span style={{ color: "#78350f", width: "145px", flexShrink: 0 }}>Email:</span>
+                    <div className="etch-biodata-item">
+                      <span className="etch-biodata-label">Email:</span>
                       <a href="mailto:dyaksaaovr@gmail.com" style={{ color: "#0284c7", fontWeight: 900, textDecoration: "underline" }}>
                         dyaksaaovr@gmail.com
                       </a>
                     </div>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                      <span style={{ color: "#78350f", width: "145px", flexShrink: 0 }}>Sekolah Saat Ini:</span>
+                    <div className="etch-biodata-item">
+                      <span className="etch-biodata-label">Sekolah Saat Ini:</span>
                       <span style={{ background: "#dcfce7", color: "#166534", padding: "0.18rem 0.65rem", borderRadius: "6px", border: "1.5px solid #86efac", fontWeight: 900 }}>
                         SMK Negeri 1 Jenangan (RPL)
                       </span>
@@ -3737,7 +3721,7 @@ export default function Home() {
               <h4 style={{ margin: "0 0 1.1rem", fontSize: "1.2rem", fontWeight: 900, color: "#fef08a", display: "flex", alignItems: "center", gap: "0.5rem" }}>
                 🧭 Navigasi Singkat
               </h4>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem", fontSize: "0.92rem", fontWeight: 800 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "0.65rem", fontSize: "0.92rem", fontWeight: 800 }}>
                 <a href="#tentang-saya" style={{ color: "#fde68a", textDecoration: "none", transition: "all 0.2s ease" }}>• Tentang Saya</a>
                 <a href="#pendidikan" style={{ color: "#fde68a", textDecoration: "none", transition: "all 0.2s ease" }}>• Pendidikan</a>
                 <a href="#profil-profesional" style={{ color: "#fde68a", textDecoration: "none", transition: "all 0.2s ease" }}>• Profil Profesional</a>
