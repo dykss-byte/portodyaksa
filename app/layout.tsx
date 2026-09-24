@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Lilita_One, Fredoka } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -35,6 +35,12 @@ const agentOrange = localFont({
 export const metadata: Metadata = {
   title: "Dyaksa Wiratara | Official Toy Story Portfolio - SMKN 1 Jenangan Ponorogo",
   description: "Portofolio personal interaktif Toy Story untuk Dyaksa Wiratara - Siswa RPL SMKN 1 Jenangan Ponorogo.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1936,7 +1936,7 @@ export default function Home() {
         {/* ======================================================= */}
         {/* 🐷 HAMM PIGGY BANK & FORKY CHEER WIDGETS                */}
         {/* ======================================================= */}
-        <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem", marginTop: "2rem" }}>
+        <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem", marginTop: "2rem" }}>
           {/* Hamm Piggy Bank Coin Counter Widget */}
           <div className="hamm-coin-slot-card">
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.85rem" }}>
@@ -2022,7 +2022,7 @@ export default function Home() {
             </div>
 
             <div className="etch-screen-frame">
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))", gap: "1.8rem", alignItems: "stretch" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "1.8rem", alignItems: "stretch" }}>
                 {/* Kolom 1: FOTO PROFESIONAL BESAR & JELAS */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div
@@ -2229,7 +2229,7 @@ export default function Home() {
             Jabatan, instansi, dan bidang yang saya tekuni.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem", marginTop: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem", marginTop: "2rem" }}>
             {/* Card 1: Jabatan & Peran */}
             <div className="toy-card-surface" style={{ border: "4.5px solid #38bdf8", padding: "2rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -2416,7 +2416,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem" }}>
             {TOY_EXPERIENCES.filter((exp) => experienceFilter === "all" || exp.category === experienceFilter).map((exp) => (
               <div
                 key={exp.title}
@@ -2508,7 +2508,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: "1.4rem" }}>
+          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "1.4rem" }}>
             {detailedSkillsList
               .map((skill, originalIdx) => ({ skill, originalIdx }))
               .filter(({ skill }) => skillCategoryFilter === "all" || skill.category === skillCategoryFilter)
@@ -2608,7 +2608,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem" }}>
             {filteredProjects.map((p) => (
               <article key={p.title} style={{ background: "#ffffff", border: "4.5px solid #38bdf8", borderRadius: "32px 16px 34px 18px", padding: "1.75rem", display: "flex", flexDirection: "column", gap: "1rem", boxShadow: "0 10px 0 #0284c7, 0 22px 45px rgba(0, 0, 0, 0.15)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -2686,7 +2686,7 @@ export default function Home() {
             Sertifikasi, pelatihan, dan penghargaan.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem", marginTop: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem", marginTop: "2rem" }}>
             {TOY_CERTIFICATES.map((cert) => (
               <div
                 key={cert.id}
@@ -2807,7 +2807,7 @@ export default function Home() {
             Momen pembelajaran teknis, pelatihan industri, seminar teknologi, dan kolaborasi tim.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(330px, 1fr))", gap: "2.2rem", marginTop: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2.2rem", marginTop: "2rem" }}>
             {TOY_ACTIVITIES.map((act) => (
               <div
                 key={act.id}
@@ -2944,7 +2944,7 @@ export default function Home() {
             Catatan belajar dan tutorial singkat.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))", gap: "2rem", marginTop: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem", marginTop: "2rem" }}>
             {TOY_ARTICLES.map((art) => (
               <article
                 key={art.title}
@@ -3011,7 +3011,7 @@ export default function Home() {
             Peta Misi & Petualangan Hidup
           </h2>
 
-          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2rem" }}>
             {TOY_QUESTS.map((q, idx) => (
               <div key={q.title} style={{ background: "#ffffff", border: "4.5px solid #f59e0b", borderRadius: "32px 16px 36px 20px", padding: "1.75rem", display: "flex", flexDirection: "column", gap: "1rem", boxShadow: "0 10px 0 #b45309, 0 22px 45px rgba(0, 0, 0, 0.15)" }}>
                 <span style={{ fontSize: "0.82rem", fontWeight: 900, padding: "0.3rem 0.85rem", borderRadius: "999px", background: "#ffffff", border: "2px solid #f59e0b", color: "#78350f", width: "fit-content", boxShadow: "0 2px 0 #d97706" }}>
@@ -3119,7 +3119,7 @@ export default function Home() {
             Kirim Pesan ke Sheriff Dyaksa!
           </h2>
 
-          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2.5rem" }}>
+          <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "2.5rem" }}>
             <form style={{ background: "#ffffff", border: "5px solid #38bdf8", borderRadius: "36px 18px 40px 22px", padding: "2.2rem", boxShadow: "0 10px 0 #0284c7, 0 25px 50px rgba(0, 0, 0, 0.15)" }} onSubmit={handleSendWhatsApp}>
               <div style={{ marginBottom: "1.3rem" }}>
                 <span style={{ display: "block", fontSize: "0.95rem", fontWeight: 900, marginBottom: "0.55rem", color: "#0f172a" }}>
@@ -3724,7 +3724,7 @@ export default function Home() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
               gap: "2.2rem",
               padding: "2.2rem 0",
               borderTop: "2px dashed rgba(254, 240, 138, 0.35)",
